@@ -8,13 +8,15 @@
 
 import UIKit
 
-var isRegister = false
+//var isRegister = false
+typealias didTapRegister = (_ _isRegister: Bool) -> ()
 
 class LoginListAccount: UIViewController {
     var rightBarButton:UIBarButtonItem = UIBarButtonItem()
     var leftBarButton:UIBarButtonItem = UIBarButtonItem()
     var userArray:Array = [String]()
-    
+    var didTapRegister: didTapRegister?
+ 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var btnAdd: UIButton!
@@ -33,13 +35,15 @@ class LoginListAccount: UIViewController {
         super.didReceiveMemoryWarning()
     }
     func addNewAccountAction(){
+         didTapRegister?(true)
         let _ = self.navigationController?.popViewController(animated: true)
-        isRegister = true
+        //isRegister = true
         
     }
     func backAccountListAction(){
+        didTapRegister?(false)
         let _ = self.navigationController?.popViewController(animated: true)
-        isRegister = false
+        //isRegister = false
     }
     
 }

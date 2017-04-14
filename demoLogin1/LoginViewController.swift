@@ -19,6 +19,10 @@ class LoginViewController: UIViewController {
                 AppDelegate.dicAccount[username!] = password
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
                 self.navigationController?.pushViewController(vc, animated: true)
+                vc.didTapRegister = {(isRegister) -> () in
+                    self.setupUIForRegisterState(isRegister)
+                }
+                
                 print(AppDelegate.dicAccount)
             }
         }
@@ -28,6 +32,9 @@ class LoginViewController: UIViewController {
                     if username == key && password == value{
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
                         self.navigationController?.pushViewController(vc, animated: true)
+                        vc.didTapRegister = {(isRegister) -> () in
+                            self.setupUIForRegisterState(isRegister)
+                        }
                     }
                 }
             }
@@ -38,21 +45,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUIForRegisterState(false)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUIForRegisterState()
-        
-       
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func setupUIForRegisterState() {
+    func setupUIForRegisterState(_ isRegister: Bool) {
         if isRegister {
             btnLoginOutlet.setTitle("Register", for: .normal)
             txtPassword.text = ""
