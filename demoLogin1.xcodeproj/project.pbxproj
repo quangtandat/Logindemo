@@ -15,6 +15,7 @@
 		EAFE457B1E9F78A7008CDB1F /* LoginListAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE45781E9F78A7008CDB1F /* LoginListAccount.swift */; };
 		EAFE457C1E9F78A7008CDB1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE45791E9F78A7008CDB1F /* LoginViewController.swift */; };
 		EAFE457E1E9F78B8008CDB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFE457D1E9F78B8008CDB1F /* Main.storyboard */; };
+		EAFE45801EA0AE54008CDB1F /* AlertViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE457F1EA0AE53008CDB1F /* AlertViewClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		EAFE45781E9F78A7008CDB1F /* LoginListAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginListAccount.swift; sourceTree = "<group>"; };
 		EAFE45791E9F78A7008CDB1F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAFE457D1E9F78B8008CDB1F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EAFE457F1EA0AE53008CDB1F /* AlertViewClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				EAFE45771E9F78A7008CDB1F /* AppDelegate.swift */,
 				EAFE45781E9F78A7008CDB1F /* LoginListAccount.swift */,
 				EAFE45791E9F78A7008CDB1F /* LoginViewController.swift */,
+				EAFE457F1EA0AE53008CDB1F /* AlertViewClass.swift */,
 				EAFE457D1E9F78B8008CDB1F /* Main.storyboard */,
 				EAFE45551E9F76EC008CDB1F /* Assets.xcassets */,
 				EAFE45571E9F76EC008CDB1F /* LaunchScreen.storyboard */,
@@ -208,6 +211,7 @@
 				EAFE457C1E9F78A7008CDB1F /* LoginViewController.swift in Sources */,
 				EAFE457B1E9F78A7008CDB1F /* LoginListAccount.swift in Sources */,
 				EAFE457A1E9F78A7008CDB1F /* AppDelegate.swift in Sources */,
+				EAFE45801EA0AE54008CDB1F /* AlertViewClass.swift in Sources */,
 				EAFE45511E9F76EB008CDB1F /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
