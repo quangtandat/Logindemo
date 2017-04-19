@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-AP-Bz6">
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSE-oX-Uui">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSE-oX-Uui">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="oQP-3D-3q6"/>
                                                 </constraints>
@@ -31,7 +32,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-kc-7xP">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-kc-7xP">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="IsU-si-XQc"/>
                                                 </constraints>
@@ -39,6 +40,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XTO-WS-MAa">
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="175" id="teU-Cg-pcx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-bn-Gyz">
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
@@ -53,11 +62,14 @@
                                         <constraints>
                                             <constraint firstItem="HSE-oX-Uui" firstAttribute="top" secondItem="ne0-AP-Bz6" secondAttribute="top" constant="91" id="3Ek-QY-AeA"/>
                                             <constraint firstItem="qPF-bn-Gyz" firstAttribute="centerX" secondItem="ne0-AP-Bz6" secondAttribute="centerX" id="52x-9r-8EJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="qPF-bn-Gyz" secondAttribute="bottom" constant="20" id="9pE-BB-0Mv"/>
+                                            <constraint firstItem="XTO-WS-MAa" firstAttribute="width" secondItem="HSE-oX-Uui" secondAttribute="width" id="8hH-L1-BUx"/>
+                                            <constraint firstAttribute="bottom" secondItem="qPF-bn-Gyz" secondAttribute="bottom" constant="8" id="9pE-BB-0Mv"/>
                                             <constraint firstItem="HSE-oX-Uui" firstAttribute="centerX" secondItem="ne0-AP-Bz6" secondAttribute="centerX" id="AO5-yF-Gu7"/>
+                                            <constraint firstItem="XTO-WS-MAa" firstAttribute="centerX" secondItem="ne0-AP-Bz6" secondAttribute="centerX" id="Aak-eq-n1O"/>
                                             <constraint firstItem="qPF-bn-Gyz" firstAttribute="width" secondItem="HSE-oX-Uui" secondAttribute="width" id="CmL-GY-IQd"/>
                                             <constraint firstItem="qPF-bn-Gyz" firstAttribute="height" secondItem="HSE-oX-Uui" secondAttribute="height" id="Efw-24-f8C"/>
-                                            <constraint firstItem="qPF-bn-Gyz" firstAttribute="top" secondItem="HSE-oX-Uui" secondAttribute="bottom" constant="109" id="SPf-gc-RZW"/>
+                                            <constraint firstItem="qPF-bn-Gyz" firstAttribute="top" secondItem="HSE-oX-Uui" secondAttribute="bottom" constant="263" id="SPf-gc-RZW"/>
+                                            <constraint firstItem="XTO-WS-MAa" firstAttribute="top" secondItem="HSE-oX-Uui" secondAttribute="bottom" constant="74" id="VC1-V7-Hyr"/>
                                             <constraint firstItem="nQK-kc-7xP" firstAttribute="top" secondItem="HSE-oX-Uui" secondAttribute="bottom" constant="26" id="e0F-wZ-1Jm"/>
                                             <constraint firstItem="HSE-oX-Uui" firstAttribute="width" secondItem="nQK-kc-7xP" secondAttribute="width" id="f4X-LL-cmT"/>
                                             <constraint firstItem="HSE-oX-Uui" firstAttribute="height" secondItem="nQK-kc-7xP" secondAttribute="height" id="kah-zd-WD1"/>
@@ -87,15 +99,18 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="btnLoginOutlet" destination="qPF-bn-Gyz" id="5nf-dV-4p9"/>
+                        <outlet property="constrantHeightTextView" destination="teU-Cg-pcx" id="OwV-sa-9Kk"/>
+                        <outlet property="constrantTxtUserNameWithButton" destination="SPf-gc-RZW" id="tAS-tg-37r"/>
                         <outlet property="outletConstraint" destination="9pE-BB-0Mv" id="ae7-KQ-IeV"/>
                         <outlet property="scrollView" destination="gC3-jY-vZC" id="ut0-Tv-WNk"/>
                         <outlet property="txtPassword" destination="nQK-kc-7xP" id="7ly-LZ-to3"/>
                         <outlet property="txtUserName" destination="HSE-oX-Uui" id="d5P-fn-dZ6"/>
+                        <outlet property="txtViewDescription" destination="XTO-WS-MAa" id="6TS-Ey-jAj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="36"/>
+            <point key="canvasLocation" x="869.60000000000002" y="35.532233883058474"/>
         </scene>
         <!--Login List Account-->
         <scene sceneID="4QQ-xL-IqX">
@@ -112,13 +127,38 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fbm-Dd-YhQ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="104" id="H7T-bC-Man">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="104" id="H7T-bC-Man" customClass="LoginListAccountCell" customModule="demoLogin1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H7T-bC-Man" id="YBm-MV-mBm">
                                             <frame key="frameInset" width="375" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSS-Vg-Yg4">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Va2-SF-QTK">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HSS-Vg-Yg4" firstAttribute="top" secondItem="YBm-MV-mBm" secondAttribute="topMargin" constant="10" id="NIJ-YF-Lmn"/>
+                                                <constraint firstItem="Va2-SF-QTK" firstAttribute="width" secondItem="HSS-Vg-Yg4" secondAttribute="width" id="R1T-9D-goc"/>
+                                                <constraint firstItem="HSS-Vg-Yg4" firstAttribute="leading" secondItem="YBm-MV-mBm" secondAttribute="leadingMargin" constant="15" id="XWX-Jw-jmS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Va2-SF-QTK" secondAttribute="bottom" constant="20" id="f0d-YK-cT3"/>
+                                                <constraint firstItem="Va2-SF-QTK" firstAttribute="top" secondItem="HSS-Vg-Yg4" secondAttribute="bottom" constant="15" id="jBg-Je-bhH"/>
+                                                <constraint firstItem="Va2-SF-QTK" firstAttribute="leading" secondItem="YBm-MV-mBm" secondAttribute="leadingMargin" constant="15" id="rtJ-7A-Q0I"/>
+                                                <constraint firstAttribute="trailing" secondItem="HSS-Vg-Yg4" secondAttribute="trailing" constant="15" id="wc1-X3-rNv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAccount" destination="HSS-Vg-Yg4" id="NEN-M9-e06"/>
+                                            <outlet property="lblDescription" destination="Va2-SF-QTK" id="K1b-HR-ECR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

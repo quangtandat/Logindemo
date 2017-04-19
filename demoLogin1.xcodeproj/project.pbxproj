@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EAE884431EA62A08007A2B57 /* LoginListAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE884421EA62A08007A2B57 /* LoginListAccountCell.swift */; };
 		EAFE45511E9F76EB008CDB1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE45501E9F76EB008CDB1F /* ViewController.swift */; };
 		EAFE45561E9F76EC008CDB1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFE45551E9F76EC008CDB1F /* Assets.xcassets */; };
 		EAFE45591E9F76EC008CDB1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFE45571E9F76EC008CDB1F /* LaunchScreen.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EAE884421EA62A08007A2B57 /* LoginListAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginListAccountCell.swift; sourceTree = "<group>"; };
 		EAFE454B1E9F76EB008CDB1F /* demoLogin1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoLogin1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFE45501E9F76EB008CDB1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EAFE45551E9F76EC008CDB1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				EAFE45791E9F78A7008CDB1F /* LoginViewController.swift */,
 				EAFE457F1EA0AE53008CDB1F /* AlertViewClass.swift */,
 				EAFE457D1E9F78B8008CDB1F /* Main.storyboard */,
+				EAE884421EA62A08007A2B57 /* LoginListAccountCell.swift */,
 				EAFE45551E9F76EC008CDB1F /* Assets.xcassets */,
 				EAFE45571E9F76EC008CDB1F /* LaunchScreen.storyboard */,
 				EAFE455A1E9F76EC008CDB1F /* Info.plist */,
@@ -211,6 +214,7 @@
 				EAFE457C1E9F78A7008CDB1F /* LoginViewController.swift in Sources */,
 				EAFE457B1E9F78A7008CDB1F /* LoginListAccount.swift in Sources */,
 				EAFE457A1E9F78A7008CDB1F /* AppDelegate.swift in Sources */,
+				EAE884431EA62A08007A2B57 /* LoginListAccountCell.swift in Sources */,
 				EAFE45801EA0AE54008CDB1F /* AlertViewClass.swift in Sources */,
 				EAFE45511E9F76EB008CDB1F /* ViewController.swift in Sources */,
 			);

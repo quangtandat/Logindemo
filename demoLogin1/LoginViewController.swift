@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     var alert:AlertViewClass = AlertViewClass()
     var flag = false
+    var flagRegister = false
     var keyboardHeight:CGFloat? {
         didSet {
             if let keyboardHeight = keyboardHeight {
@@ -19,6 +20,12 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    @IBOutlet weak var constrantHeightTextView: NSLayoutConstraint!
+    
+    @IBOutlet weak var constrantTxtUserNameWithButton: NSLayoutConstraint!
+    @IBOutlet weak var txtViewDescription: UITextView!
+    
     @IBOutlet weak var btnLoginOutlet: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,42 +33,70 @@ class LoginViewController: UIViewController {
     @IBAction func btnTap(_ sender: AnyObject) {
         let username = txtUserName.text
         let password = txtPassword.text
+        let description = txtViewDescription.text
         if btnLoginOutlet.titleLabel?.text! == "Register" {
-            if username != nil && password != nil{
-                AppDelegate.dicAccount[username!] = password
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
-                self.navigationController?.pushViewController(vc, animated: true)
-                vc.didTapRegister = {(isRegister) -> () in
-                    self.setupUIForRegisterState(isRegister)
+            self.view.endEditing(true)
+            if username != "" && password != ""{
+                for pointer in AppDelegate.dicAccountArray{
+                    if username == pointer["username"] {
+                        flagRegister = true
+                    }
+                    
                 }
-                print(AppDelegate.dicAccount)
+                if (flagRegister){
+                    let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                    })
+                    alert.showAlert("Alert", message:"Username already exists", actions:[actionOK])
+                    flagRegister = false
+                }
+                else{
+                    AppDelegate.dicAccountArray.append(["username":username!,"password":password!,"description":description!])
+                    print(AppDelegate.dicAccountArray)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.didTapRegister = {(isRegister) -> () in
+                        self.setupUIForRegisterState(isRegister)
+                       
+                    }
+                    
+                }
+            }
+            else{
+                let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                })
+                alert.showAlert("Alert", message:"username and password empty", actions:[actionOK])
             }
         }
         else{
+            
             // condition username and password is not empty
             if username != "" && password != ""{ //
                 //loop all dictionary to find username and password
-                for (key,value) in AppDelegate.dicAccount{
-                    if username == key && password == value{
+                for pointer in AppDelegate.dicAccountArray{
+                    if username == pointer["username"] && password == pointer["password"]
+                    {
                         flag = true
                     }
+                    
+                    //AppDelegate.dicAccountArray.append(a)
                 }
-                    // check if dictionary have username and password
-                    if flag == true{
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        vc.didTapRegister = {(isRegister) -> () in
-                            self.setupUIForRegisterState(isRegister)
-                        }
-                    }
-                        //if don't show alert
-                    else{
-                        let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
-                        })
-                        alert.showAlert("Alert", message:"Password or username wrong", actions:[actionOK])
+                // check if dictionary have username and password
+                if flag == true{
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.didTapRegister = {(isRegister) -> () in
+                        self.setupUIForRegisterState(isRegister)
+                        self.view.endEditing(true)
                     }
                 }
-            
+                    //if don't show alert
+                else{
+                    let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                    })
+                    alert.showAlert("Alert", message:"Password or username wrong", actions:[actionOK])
+                }
+            }
+                
                 // condition username and password is empty
             else{
                 let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
@@ -81,18 +116,24 @@ class LoginViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(self.isTap))
         self.view.addGestureRecognizer(tapGesture)
         
-        txtUserName.returnKeyType = .done
+        // txtUserName.returnKeyType = .next
         txtUserName.delegate = self
-        txtPassword.returnKeyType = .done
+        // txtPassword.returnKeyType = .next
+        // txtViewDescription.returnKeyType = .done
+        txtViewDescription.delegate = self
         txtPassword.delegate = self
         //observer when keyboard did show
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        txtUserName.tag = 0
+        txtPassword.tag = 1
         
         
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.endEditing(true)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,17 +142,36 @@ class LoginViewController: UIViewController {
     
     func setupUIForRegisterState(_ isRegister: Bool) {
         if isRegister {
+            txtUserName.returnKeyType = .next
+            txtPassword.returnKeyType = .next
+            txtViewDescription.returnKeyType = .done
             btnLoginOutlet.setTitle("Register", for: .normal)
             txtPassword.text = ""
             txtUserName.text = ""
+           txtViewDescription.text = ""
+
             flag = false
-            
+            if  txtViewDescription.isHidden == true{
+                txtViewDescription.isHidden = false
+                constrantTxtUserNameWithButton.constant =  constrantTxtUserNameWithButton.constant + constrantHeightTextView.constant
+            }
         }
         else {
+            txtUserName.returnKeyType = .next
+            txtPassword.returnKeyType = .done
+            
             btnLoginOutlet.setTitle("Login", for: .normal)
             txtPassword.text = ""
             txtUserName.text = ""
+        
+            //txtViewDescription.endEditing(true)
             flag = false
+            if  txtViewDescription.isHidden == false{
+                txtViewDescription.isHidden = true
+                constrantTxtUserNameWithButton.constant =  constrantTxtUserNameWithButton.constant - constrantHeightTextView.constant
+            }
+            self.view.endEditing(true)
+            self.view.resignFirstResponder()
             
         }
     }
@@ -123,10 +183,19 @@ class LoginViewController: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = keyboardSize.height
-           // check if keyboard frame is higher than textfield frame if higher textfield will be pushed up
-            let heightScroll = keyboardHeight! - txtPassword.frame.maxY
-            if heightScroll<0{
-                scrollView.setContentOffset(CGPoint(x: 0, y: txtPassword.frame.maxY - keyboardHeight!), animated: true)
+            // check if keyboard frame is higher than textfield frame if higher textfield will be pushed up
+            if (txtPassword.isFirstResponder){
+                let heightScrolltxtPassword = keyboardHeight! - txtPassword.frame.maxY
+                if heightScrolltxtPassword<0{
+                    scrollView.setContentOffset(CGPoint(x: 0, y: txtPassword.frame.maxY - keyboardHeight!), animated: true)
+                }
+            }
+            else if (txtViewDescription.isFirstResponder){
+                let heightScrolltxtViewDescription = keyboardHeight! - txtViewDescription.frame.maxY
+                if heightScrolltxtViewDescription<0{
+                    scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
+                    
+                }
             }
         }
     }
@@ -134,11 +203,83 @@ class LoginViewController: UIViewController {
 }
 extension LoginViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
+        let username = txtUserName.text
+        let password = txtPassword.text
+        let description = txtViewDescription.text
+        if btnLoginOutlet.titleLabel?.text! == "Register" {
+            if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                nextField.becomeFirstResponder()
+            }
+            else{
+                 textField.resignFirstResponder()
+                }
+        }
+            
+            
+        else{
+            
+            if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                nextField.becomeFirstResponder()
+            } else {
+                if username != "" && password != ""{ //
+                    //loop all dictionary to find username and password
+                    for pointer in AppDelegate.dicAccountArray{
+                        if username == pointer["username"] && password == pointer["password"]
+                        {
+                            flag = true
+                        }
+                        
+                        //AppDelegate.dicAccountArray.append(a)
+                    }
+                    // check if dictionary have username and password
+                    if flag == true{
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        vc.didTapRegister = {(isRegister) -> () in
+                            self.setupUIForRegisterState(isRegister)
+                            self.view.endEditing(true)
+                        }
+                    }
+                        //if don't show alert
+                    else{
+                        let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                        })
+                        alert.showAlert("Alert", message:"Password or username wrong", actions:[actionOK])
+                    }
+                }
+                    
+                    // condition username and password is empty
+                else{
+                    let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                    })
+                    alert.showAlert("Alert", message:"username and password empty", actions:[actionOK])
+                }
+            }
+
+                textField.resignFirstResponder()
+            }
     
+    
+    
+        return true
+}
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         outletConstraint.constant = 10
     }
+}
+extension LoginViewController: UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView) {
+        outletConstraint.constant = 10
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        txtViewDescription.text = ""
+    }
+    // limit character in textview < 300 character
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.characters.count
+        return numberOfChars < 300;
+    }
+    
+    
 }
