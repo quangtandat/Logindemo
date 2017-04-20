@@ -134,6 +134,8 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
         
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -191,7 +193,7 @@ class LoginViewController: UIViewController {
                 }
             }
             else if (txtViewDescription.isFirstResponder){
-                let heightScrolltxtViewDescription = keyboardHeight! - txtViewDescription.frame.maxY
+                let heightScrolltxtViewDescription = keyboardHeight! - txtViewDescription.frame.minY
                 if heightScrolltxtViewDescription<0{
                     scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
                     
@@ -272,7 +274,7 @@ extension LoginViewController: UITextViewDelegate{
         outletConstraint.constant = 10
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        txtViewDescription.text = ""
+       // txtViewDescription.text = ""
     }
     // limit character in textview < 300 character
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
