@@ -33,7 +33,20 @@ class LoginViewController: UIViewController {
     @IBAction func btnTap(_ sender: AnyObject) {
         let username = txtUserName.text
         let password = txtPassword.text
-        let description = txtViewDescription.text
+        var description = txtViewDescription.text
+        if description == "Your text here"
+        {
+            description = ""
+        }
+        // seperate string to array
+      var arrayOfString = description?.components(separatedBy: CharacterSet.newlines)
+        arrayOfString = arrayOfString?.filter{$0 != ""}
+        let joiner = "\n"
+      
+        let joinedStrings = arrayOfString?.joined(separator: joiner)
+        
+        
+        
         if btnLoginOutlet.titleLabel?.text! == "Register" {
             self.view.endEditing(true)
             if username != "" && password != ""{
@@ -50,7 +63,7 @@ class LoginViewController: UIViewController {
                     flagRegister = false
                 }
                 else{
-                    AppDelegate.dicAccountArray.append(["username":username!,"password":password!,"description":description!])
+                    AppDelegate.dicAccountArray.append(["username":username!,"password":password!,"description":joinedStrings!])
                     print(AppDelegate.dicAccountArray)
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -150,7 +163,8 @@ class LoginViewController: UIViewController {
             btnLoginOutlet.setTitle("Register", for: .normal)
             txtPassword.text = ""
             txtUserName.text = ""
-           txtViewDescription.text = ""
+            txtViewDescription.text = "Your text here"
+            txtViewDescription.textColor = UIColor.lightGray
 
             flag = false
             if  txtViewDescription.isHidden == true{
@@ -272,9 +286,16 @@ extension LoginViewController: UITextFieldDelegate{
 extension LoginViewController: UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         outletConstraint.constant = 10
+        if txtViewDescription.text.isEmpty {
+            txtViewDescription.text = "Your text here"
+            txtViewDescription.textColor = UIColor.lightGray
+        }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
-       // txtViewDescription.text = ""
+        if txtViewDescription.textColor == UIColor.lightGray {
+            txtViewDescription.text = nil
+            txtViewDescription.textColor = UIColor.black
+        }
     }
     // limit character in textview < 300 character
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -282,6 +303,6 @@ extension LoginViewController: UITextViewDelegate{
         let numberOfChars = newText.characters.count
         return numberOfChars < 300;
     }
-    
+
     
 }
