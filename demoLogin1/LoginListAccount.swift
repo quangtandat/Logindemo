@@ -16,6 +16,8 @@ class LoginListAccount: UIViewController {
     var leftBarButton:UIBarButtonItem = UIBarButtonItem()
     var userArray:Array = [String]()
     var didTapRegister: didTapRegister?
+    var accountList = AccountPerson()
+    var arrayAccountList = [[String:String]]()
  
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,6 +36,7 @@ class LoginListAccount: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
        // userArray   = Array(AppDelegate.dicAccountArray.keys)
+        arrayAccountList = accountList.querryData()
         
     }
     override func didReceiveMemoryWarning() {
@@ -56,8 +59,8 @@ extension LoginListAccount:UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LoginListAccountCell
-        cell.lblAccount.text = AppDelegate.dicAccountArray[indexPath.row]["username"]
-       cell.lblDescription.text = AppDelegate.dicAccountArray[indexPath.row]["description"]
+        cell.lblAccount.text = arrayAccountList[indexPath.row]["username"]
+       cell.lblDescription.text = arrayAccountList[indexPath.row]["description"]
        // cell.lblDescription.numberOfLines = 3
         return cell
     }
@@ -65,7 +68,7 @@ extension LoginListAccount:UITableViewDataSource{
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
-        return AppDelegate.dicAccountArray.count
+        return arrayAccountList.count
         
     }
    

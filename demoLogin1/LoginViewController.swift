@@ -7,10 +7,12 @@
 //
 
 import UIKit
-
+import RealmSwift
 class LoginViewController: UIViewController {
     var alert:AlertViewClass = AlertViewClass()
     var flag = false
+    var arrayOfAccount = [[String:String]]()
+    let account = AccountPerson()
     var flagRegister = false
     var keyboardHeight:CGFloat? {
         didSet {
@@ -34,6 +36,7 @@ class LoginViewController: UIViewController {
         let username = txtUserName.text
         let password = txtPassword.text
         var description = txtViewDescription.text
+        arrayOfAccount = account.querryData()
         if description == "Your text here"
         {
             description = ""
@@ -50,7 +53,7 @@ class LoginViewController: UIViewController {
         if btnLoginOutlet.titleLabel?.text! == "Register" {
             self.view.endEditing(true)
             if username != "" && password != ""{
-                for pointer in AppDelegate.dicAccountArray{
+                for pointer in arrayOfAccount{
                     if username == pointer["username"] {
                         flagRegister = true
                     }
@@ -63,8 +66,9 @@ class LoginViewController: UIViewController {
                     flagRegister = false
                 }
                 else{
-                    AppDelegate.dicAccountArray.append(["username":username!,"password":password!,"description":joinedStrings!])
-                    print(AppDelegate.dicAccountArray)
+                   // AppDelegate.dicAccountArray.append(["username":username!,"password":password!,"description":joinedStrings!])
+                   // print(AppDelegate.dicAccountArray)
+                    account.addAccount(username: username!, password: password!, description: joinedStrings!)
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginListAccount") as! LoginListAccount
                     self.navigationController?.pushViewController(vc, animated: true)
                     vc.didTapRegister = {(isRegister) -> () in
@@ -85,7 +89,7 @@ class LoginViewController: UIViewController {
             // condition username and password is not empty
             if username != "" && password != ""{ //
                 //loop all dictionary to find username and password
-                for pointer in AppDelegate.dicAccountArray{
+                for pointer in arrayOfAccount{
                     if username == pointer["username"] && password == pointer["password"]
                     {
                         flag = true
@@ -129,16 +133,24 @@ class LoginViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(self.isTap))
         self.view.addGestureRecognizer(tapGesture)
         
-        // txtUserName.returnKeyType = .next
+       
         txtUserName.delegate = self
-        // txtPassword.returnKeyType = .next
-        // txtViewDescription.returnKeyType = .done
+       
         txtViewDescription.delegate = self
         txtPassword.delegate = self
         //observer when keyboard did show
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         txtUserName.tag = 0
         txtPassword.tag = 1
+      
+        var checkArrayDefault = account.querryData()
+       
+        if checkArrayDefault.count == 0
+        {
+            account.addAccountDefault()
+        }
+    
+       
         
         
         
@@ -222,6 +234,7 @@ extension LoginViewController: UITextFieldDelegate{
         let username = txtUserName.text
         let password = txtPassword.text
         let description = txtViewDescription.text
+         arrayOfAccount = account.querryData()
         if btnLoginOutlet.titleLabel?.text! == "Register" {
             if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
                 nextField.becomeFirstResponder()
@@ -239,7 +252,7 @@ extension LoginViewController: UITextFieldDelegate{
             } else {
                 if username != "" && password != ""{ //
                     //loop all dictionary to find username and password
-                    for pointer in AppDelegate.dicAccountArray{
+                    for pointer in arrayOfAccount{
                         if username == pointer["username"] && password == pointer["password"]
                         {
                             flag = true
@@ -303,6 +316,5 @@ extension LoginViewController: UITextViewDelegate{
         let numberOfChars = newText.characters.count
         return numberOfChars < 300;
     }
-
-    
+   
 }
