@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA61FB9F1EAA215400D66FD2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9D1EAA215400D66FD2 /* Realm.framework */; };
+		EA61FBA01EAA215400D66FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9E1EAA215400D66FD2 /* RealmSwift.framework */; };
+		EA61FBA11EAA216200D66FD2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9D1EAA215400D66FD2 /* Realm.framework */; };
+		EA61FBA21EAA216200D66FD2 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9D1EAA215400D66FD2 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA61FBA31EAA216200D66FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9E1EAA215400D66FD2 /* RealmSwift.framework */; };
+		EA61FBA41EAA216200D66FD2 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA61FB9E1EAA215400D66FD2 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAE884431EA62A08007A2B57 /* LoginListAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE884421EA62A08007A2B57 /* LoginListAccountCell.swift */; };
 		EAE884B51EA9ED3A007A2B57 /* AccountPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE884B41EA9ED3A007A2B57 /* AccountPerson.swift */; };
-		EAE884B81EA9EDAE007A2B57 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B61EA9EDAE007A2B57 /* RealmSwift.framework */; };
-		EAE884B91EA9EDAE007A2B57 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B71EA9EDAE007A2B57 /* Realm.framework */; };
-		EAE884BA1EA9EDBD007A2B57 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B61EA9EDAE007A2B57 /* RealmSwift.framework */; };
-		EAE884BB1EA9EDBD007A2B57 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B61EA9EDAE007A2B57 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EAE884BC1EA9EDBD007A2B57 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B71EA9EDAE007A2B57 /* Realm.framework */; };
-		EAE884BD1EA9EDBD007A2B57 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAE884B71EA9EDAE007A2B57 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAFE45511E9F76EB008CDB1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE45501E9F76EB008CDB1F /* ViewController.swift */; };
 		EAFE45561E9F76EC008CDB1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFE45551E9F76EC008CDB1F /* Assets.xcassets */; };
 		EAFE45591E9F76EC008CDB1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFE45571E9F76EC008CDB1F /* LaunchScreen.storyboard */; };
@@ -43,8 +43,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EAE884BD1EA9EDBD007A2B57 /* Realm.framework in Embed Frameworks */,
-				EAE884BB1EA9EDBD007A2B57 /* RealmSwift.framework in Embed Frameworks */,
+				EA61FBA41EAA216200D66FD2 /* RealmSwift.framework in Embed Frameworks */,
+				EA61FBA21EAA216200D66FD2 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,10 +52,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EA61FB9D1EAA215400D66FD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		EA61FB9E1EAA215400D66FD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		EAE884421EA62A08007A2B57 /* LoginListAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginListAccountCell.swift; sourceTree = "<group>"; };
 		EAE884B41EA9ED3A007A2B57 /* AccountPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPerson.swift; sourceTree = "<group>"; };
-		EAE884B61EA9EDAE007A2B57 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		EAE884B71EA9EDAE007A2B57 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		EAFE454B1E9F76EB008CDB1F /* demoLogin1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoLogin1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFE45501E9F76EB008CDB1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EAFE45551E9F76EC008CDB1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,10 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE884BC1EA9EDBD007A2B57 /* Realm.framework in Frameworks */,
-				EAE884B91EA9EDAE007A2B57 /* Realm.framework in Frameworks */,
-				EAE884B81EA9EDAE007A2B57 /* RealmSwift.framework in Frameworks */,
-				EAE884BA1EA9EDBD007A2B57 /* RealmSwift.framework in Frameworks */,
+				EA61FBA11EAA216200D66FD2 /* Realm.framework in Frameworks */,
+				EA61FBA01EAA215400D66FD2 /* RealmSwift.framework in Frameworks */,
+				EA61FBA31EAA216200D66FD2 /* RealmSwift.framework in Frameworks */,
+				EA61FB9F1EAA215400D66FD2 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +125,8 @@
 				EAFE45551E9F76EC008CDB1F /* Assets.xcassets */,
 				EAFE45571E9F76EC008CDB1F /* LaunchScreen.storyboard */,
 				EAFE455A1E9F76EC008CDB1F /* Info.plist */,
-				EAE884B61EA9EDAE007A2B57 /* RealmSwift.framework */,
-				EAE884B71EA9EDAE007A2B57 /* Realm.framework */,
+				EA61FB9D1EAA215400D66FD2 /* Realm.framework */,
+				EA61FB9E1EAA215400D66FD2 /* RealmSwift.framework */,
 			);
 			path = demoLogin1;
 			sourceTree = "<group>";
