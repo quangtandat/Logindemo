@@ -12,6 +12,9 @@ class AccountPerson: Object {
     dynamic var username = ""
     dynamic var password = ""
     dynamic var descriptionString = ""
+    dynamic var age:Int = 0
+    dynamic var dateOfBirth = ""
+    dynamic var address = ""
    
     
     func addAccount(username:String, password: String, description:String){
@@ -35,7 +38,7 @@ class AccountPerson: Object {
                 dicAccount["description"] = account.descriptionString
                 arrayOfAccount.append(dicAccount)
             }
-        print(dicAccount)
+       // print(dicAccount)
         return arrayOfAccount
         }
     func addAccountDefault(){

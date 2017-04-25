@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 4,
+            migrationBlock: { migration, oldSchemaVersion in
+               
+                migration.enumerateObjects(ofType: AccountPerson.className()) { oldObject, newObject in
+                    
+                    if oldSchemaVersion < 1 {
+                       
+                        newObject!["age"] = 0
+                    }
+                    if oldSchemaVersion < 2 {
+                        newObject!["dateOfBirth"] = ""
+                    }
+                    if oldSchemaVersion < 3 {
+                        newObject!["address"] = ""
+                    }
+                }
+        })
+      
+        let realm = try! Realm()
+      
+        
+        
         return true
     }
 
